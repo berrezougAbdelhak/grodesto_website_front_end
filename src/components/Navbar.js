@@ -1,5 +1,4 @@
 import { Mail, Notifications, Pets } from "@mui/icons-material";
-import "./style.css"
 import {
   AppBar,
   Toolbar,
@@ -23,6 +22,10 @@ const StyledToolbar = styled(Toolbar)({
   backgroundColor: "white",
 });
 
+const StyledButton = styled(Button)({
+  "&:hover": { background: "#E5EAFF",border:"none",color:"#302F6B" },
+  transition: "0.5s"
+});
 const Search = styled("div")(({ theme }) => ({
   backgroundColor: "white",
   padding: "0 10px",
@@ -104,8 +107,7 @@ export const Navbar = () => {
               ))}
             </Box>
             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-              <Button
-                className="navBarButton"              
+              <StyledButton
                 variant="outlined"
                 sx={{
                   background: "rgb(31,49,117)",
@@ -119,15 +121,13 @@ export const Navbar = () => {
                   color: "white",
                   fontSize: 16,
                   fontFamily: "Poppins",
-                  "&:hover": {
-                    backgroundColor: "#E5EAFF"
-                  }
-
+                  
+                  
                 }}
-              >
+                >
                 {" "}
                 Partenariat
-              </Button>
+              </StyledButton>
               <Button
                 variant="outlined"
                 sx={{
@@ -142,9 +142,7 @@ export const Navbar = () => {
                   color: "white",
                   fontSize: 16,
                   fontFamily: "Poppins",
-                  ":hover": {
-                    backgroundColor: "#E5EAFF"
-                  }
+                 
                   
                 }}
               >

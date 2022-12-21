@@ -1,26 +1,29 @@
 import { createTheme } from "@mui/material/styles";
 
-export  const theme=createTheme({
-    palette:{
-        yellow :{
-        main:"#E7961C",
-        
+export const theme = createTheme({
+  palette: {
+    BlueGroDesto: {
+      main: "#302F6B",
     },
-        blue :{
-        main:"black",
-        
+    YellowGroDesto: {
+      main: "#E7961C",
     },
-    otherColor:{
-        main:"	#FFFFFF",
-        light:"#000000"
+    BlueGradient: {
+      main: "rgb(31,49,117)",
+      mainGradient:
+        "linear-gradient(180deg, rgba(31,49,117,1) 0%, rgba(22,36,87,1) 100%)",
+    },
+    YellowGradient: {
+      main: "rgb(247,181,0)",
+      mainGradient:
+        "linear-gradient(185deg, rgba(247,181,0,1) 0%, rgba(247,141,0,1) 100%)",
+    },
 
+    ColorHover: {
+      main: "#E5EAFF",
     },
-    // typography: {
-    // //     // In Chinese and Japanese the characters are usually larger,
-    // //     // so a smaller fontsize may be appropriate.
-    // myVariant: {
-    //     fontSize:"20rem",
-    //   }
-    //   },
-    }
-})
+    ColorTextNav: {
+      main: "#707070",
+    },
+  },
+});

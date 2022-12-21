@@ -11,62 +11,48 @@ import {
   InputBase,
   Button,
   Container,
+  useTheme,
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
-import { CardMedia } from "@mui/material";
+import { ButtonGr } from "./ui/ButtonGr";
 const pages = ["Home", "Relations investisseurs", "Contact"];
-const StyledToolbar = styled(Toolbar)({
-  display: "flex",
+
+const DeskStyle = styled(Box)(({theme})=>({
+  display:"flex",
   justifyContent: "space-between",
-  backgroundColor: "white",
-});
-
-const StyledButton = styled(Button)({
-  "&:hover": { background: "#E5EAFF",border:"none",color:"#302F6B" },
-  transition: "0.5s"
-});
-const Search = styled("div")(({ theme }) => ({
-  backgroundColor: "white",
-  padding: "0 10px",
-  borderRadius: theme.shape.borderRadius,
-  width: "40%",
+  [theme.breakpoints.down("lg")] :{
+    display:"none"
+}
+}));
+const MobileStyle = styled(Box)(({theme})=>({
+  display:"none",
+  justifyContent: "space-between",
+  [theme.breakpoints.down("lg")] :{
+    display:"flex"
+}
 }));
 
-const Icons = styled(Box)(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  gap: "20px",
-  [theme.breakpoints.down("sm")]: {
-    display: "none",
-  },
-  // backgroundColor:"white",
-  // padding:"0 10px",
-  // borderRadius :theme.shape.borderRadius,
-}));
-
-const UserBox = styled(Box)(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  gap: "10px",
-  [theme.breakpoints.up("sm")]: {
-    display: "none",
-  },
-}));
 export const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const theme = useTheme();
   return (
-    // sx={{display:"flex", alignItems:"center" }}
     <AppBar
       position="static"
-      sx={{ backgroundColor: "white", boxShadow: "none" }}
+      sx={{ backgroundColor: "white", boxShadow: "none",  }}
     >
-      <Container maxWidth="xl">
+      {/* <Container maxWidth="xl" > */}
         <Toolbar
           sx={{
             height: "100px",
             display: "flex",
             justifyContent: "space-between",
+            [theme.breakpoints.down("lg")] :{
+                  height:"50px",
+                  minHeight:"40px",
+                  padding:"8px",
+              },
+
           }}
         >
           <Box
@@ -75,31 +61,27 @@ export const Navbar = () => {
             style={{
               width: 159,
               height: 37,
-              display: { sm: "none", md: "flex" },
+              display:"flex",
             }}
-            alt="The house from the offer."
+            alt="GroDesto LOGO"
           />
-          <Box sx={{ display: "flex", alignItems: "center" }}>
+          <DeskStyle>
             <Box
               sx={{
                 flexGrow: 1,
-                display: { sm: "none", md: "flex " },
+             
                 marginRight: "79px",
               }}
             >
               {pages.map((page) => (
                 <Button
                   key={page}
-                  
                   // onClick={handleCloseNavMenu}
                   sx={{
                     my: 2,
-                    color: "black",
-                    display: "block",
                     fontSize: 16,
                     fontFamily: "Poppins",
-                    color:"#707070",
-                    
+                    color: "#707070",
                   }}
                 >
                   {page}
@@ -107,52 +89,35 @@ export const Navbar = () => {
               ))}
             </Box>
             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-              <StyledButton
+              
+              <ButtonGr
+                title="Partenariat"
+
                 variant="outlined"
-                sx={{
-                  background: "rgb(31,49,117)",
-                  background: "linear-gradient(180deg, rgba(31,49,117,1) 0%, rgba(22,36,87,1) 100%)",
-                  borderRadius: "10px",
-                  border: "none",
-                  display: { xs: "none", md: "flex " },
+                style={{
+                  background: theme.palette.BlueGradient.main,
+                  background: theme.palette.BlueGradient.mainGradient,
                   width: 164,
                   height: 56,
                   marginRight: 2,
-                  color: "white",
-                  fontSize: 16,
-                  fontFamily: "Poppins",
-                  
-                  
                 }}
-                >
-                {" "}
-                Partenariat
-              </StyledButton>
-              <Button
+               
+              ></ButtonGr>
+              <ButtonGr
+                title="Commencer à vendre"
                 variant="outlined"
-                sx={{
-                  background: "rgb(247,181,0)",
-                  background:
-                    "linear-gradient(185deg, rgba(247,181,0,1) 0%, rgba(247,141,0,1) 100%)",
-                  borderRadius: "10px",
-                  border: "none",
-                  display: { xs: "none", md: "flex " },
+                style={{
+                  background: theme.palette.YellowGradient.main,
+                  background: theme.palette.YellowGradient.mainGradient,
                   width: 260,
                   height: 56,
-                  color: "white",
-                  fontSize: 16,
-                  fontFamily: "Poppins",
-                 
-                  
+               
                 }}
-              >
-                {" "}
-                Commencer à vendre
-              </Button>
+               
+              ></ButtonGr>
             </Box>
-          </Box>
+            </DeskStyle>
         </Toolbar>
-      </Container>
     </AppBar>
 
     // <div>
